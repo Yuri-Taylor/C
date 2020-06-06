@@ -111,30 +111,61 @@ char IsWin(char arr[ROW][COL], int row, int col)
 {
 	//ºá
 	int i = 0;
+	int j = 0;
+	int flag = 0;
 	for (i = 0; i < row; i++)
 	{
-		if (arr[i][0] == arr[i][1] && arr[i][1] == arr[i][2] && arr[i][0] != ' ')
+		for (j = 0; j < col - 1; j++)
 		{
-			return arr[i][0];
+			if (arr[i][j] == arr[i][j + 1] && (arr[i][0] != ' '))
+				flag = 1;
+			else {
+				flag = 0;
+				break;
+			}
 		}
+		if (flag == 1)
+			return arr[i][0];
 	}
 	//Êú
 	for (i = 0; i < col; i++)
 	{
-		if (arr[0][i] == arr[1][i] && arr[1][i] == arr[2][i] && arr[1][i] != ' ')
+		for (j = 0; j < row - 1; j++)
 		{
-			return arr[1][i];
+			if (arr[j][i] == arr[j+1][i] && (arr[0][j] != ' '))
+				flag = 1;
+			else {
+				flag = 0;
+				break;
+			}
 		}
+		if (flag == 1)
+			return arr[0][i];
 	}
 	//Ð±
-	if (arr[0][0] == arr[1][1] && arr[1][1] == arr[2][2] && arr[1][1] != ' ')
+	for (j = 0; j < row - 1; j++)
 	{
-		return arr[1][1];
+		if (arr[j][j] == arr[j+1][j + 1] && (arr[0][0] != ' '))
+			flag = 1;
+		else {
+			flag = 0;
+			break;
+		}
 	}
-	if (arr[0][2] == arr[1][1] && arr[1][1] == arr[2][0] && arr[1][1] != ' ')
+	if (flag == 1)
+		return arr[0][0];
+
+	for (j = 0; j < row - 1; j++)
 	{
-		return arr[1][1];
+		if (arr[j][row-j-1] == arr[j + 1][row-j-2] && (arr[0][row-1] != ' '))
+			flag = 1;
+		else {
+			flag = 0;
+			break;
+		}
 	}
+	if (flag == 1)
+		return arr[0][row-1];
 	//Æ½¾Ö
 	if (IsFull(arr, row, col))
 	{
