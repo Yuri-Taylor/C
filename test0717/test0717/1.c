@@ -177,63 +177,270 @@
 //	return 0;
 //}
 
-#include <stdio.h> 
-int add(int a, int b) 
-{  
-	return a + b;
-} 
-int sub(int a, int b) 
-{ 
-	return a - b; 
-} 
-int mul(int a, int b)
-{  
-	return a*b;
-} 
-int div(int a, int b) 
-{ 
-	return a / b;
-} 
-int main() 
+//#include <stdio.h> 
+//int add(int a, int b) 
+//{  
+//	return a + b;
+//} 
+//int sub(int a, int b) 
+//{ 
+//	return a - b; 
+//} 
+//int mul(int a, int b)
+//{  
+//	return a*b;
+//} 
+//int div(int a, int b) 
+//{ 
+//	return a / b;
+//} 
+//int main() 
+//{
+//	int x, y;
+//	int input = 1;    
+//	int ret = 0;    
+//	while (input)
+//	{ 
+//		printf("*************************\n");
+//		printf("  1:add           2:sub  \n");
+//		printf("  3:mul           4:div  \n");
+//		printf("*************************\n");         
+//		printf("请选择：");         
+//		scanf("%d", &input);         
+//		switch (input) 
+//		{ 
+//		case 1:               
+//			printf("输入操作数：");               
+//			scanf("%d %d", &x, &y);               
+//			ret = add(x, y);              
+//			break;         
+//		case 2:               
+//			printf("输入操作数：");               
+//			scanf("%d %d", &x, &y);               
+//			ret = sub(x, y);               
+//			break;         
+//		case 3:               
+//			printf("输入操作数：");              
+//			scanf("%d %d", &x, &y);               
+//			ret = mul(x, y);               
+//			break;         
+//		case 4:               
+//			printf("输入操作数：");               
+//			scanf("%d %d", &x, &y);               
+//			ret = div(x, y);               
+//			break;         
+//		default:               
+//			printf("选择错误\n");               
+//			break;
+//		}         
+//		printf("ret = %d\n", ret);
+//	}     
+//	return 0;
+//}
+
+
+
+//#include <stdio.h> 
+//int add(int a, int b) 
+//{  
+//	return a + b;
+//} 
+//int sub(int a, int b) 
+//{ 
+//	return a - b; 
+//} 
+//int mul(int a, int b)
+//{  
+//	return a*b;
+//} 
+//int div(int a, int b) 
+//{ 
+//	return a / b;
+//} 
+//int main() 
+//{
+//	int x, y;   
+//	int input = 1;   
+//	int ret = 0;   
+//	int(*p[5])(int x, int y) = { 0, add, sub, mul, div }; //转移表   
+//	while (input)  
+//	{     
+//		printf( "*************************\n" );  
+//		printf( "  1:add           2:sub  \n" );    
+//		printf( "  3:mul           4:div  \n" );    
+//		printf( "*************************\n" );     
+//		printf( "请选择：" );     
+//		scanf( "%d", &input);     
+//		if ((input <= 4 && input >= 1))  
+//		{        
+//			printf( "输入操作数：" );      
+//			scanf( "%d %d", &x, &y);          
+//			ret = (*p[input])(x, y);        
+//		}       
+//		else       
+//			printf( "输入有误\n" );   
+//		printf( "ret = %d\n", ret);  
+//	}   
+//	return 0;
+//}
+
+
+//void test(const char* str) 
+//{
+//	printf("%s\n", str); 
+//}
+//int main() 
+//{  
+//	//函数指针pfun  
+//	void (*pfun)(const char*) = test; 
+//	//函数指针的数组pfunArr
+//	void(*pfunArr[5])(const char* str);  
+//	pfunArr[0] = test;  
+//	//指向函数指针数组pfunArr的指针ppfunArr  
+//	void (*(*ppfunArr)[10])(const char*) = &pfunArr; 
+//	return 0; 
+//}
+
+
+//#include <stdio.h> 
+//int int_cmp(const void * p1, const void * p2) 
+//{   
+//	return (*( int *)p1 > *(int *) p2); 
+//} 
+//
+//int main() 
+//{
+//	int arr[] = { 1, 3, 5, 7, 9, 2, 4, 6, 8, 0 };  
+//	int i = 0;       
+//	qsort(arr, sizeof(arr) / sizeof(arr[0]), sizeof(int), int_cmp);   
+//	for (i = 0; i < sizeof(arr) / sizeof(arr[0]); i++) 
+//	{ 
+//		printf("%d ", arr[i]);
+//	}  
+//	printf("\n");  
+//	return 0;
+//}
+
+
+//#include <stdio.h> 
+//int int_cmp(const void * p1, const void * p2) 
+//{   
+//	return (*( int *)p1 > *(int *) p2); 
+//} 
+//
+//void _swap(void *p1, void * p2, int size) 
+//{
+//	int i = 0;  
+//	for (i = 0; i < size; i++)
+//	{
+//		char tmp = *((char *)p1 + i);     
+//		*((char *)p1 + i) = *((char *)p2 + i);  
+//		*((char *)p2 + i) = tmp;
+//	}
+//}
+//
+//void bubble(void *base, int count, int size, int(*cmp)(void *, void *)) 
+//{ 
+//	int i = 0;   
+//	int j = 0;   
+//	for (i = 0; i < count - 1; i++)
+//	{ 
+//		for (j = 0; j < count - i - 1; j++) 
+//		{ 
+//			if (cmp((char *)base + j * size, (char *)base + (j + 1)*size) > 0)
+//			{
+//				_swap((char *)base + j * size, (char *)base + (j + 1)*size, size);
+//			}
+//		}
+//	} 
+//} 
+//int main()
+//{
+//	int arr[] = { 1, 3, 5, 7, 9, 2, 4, 6, 8, 0 };     
+//	int i = 0; 
+//	bubble(arr, sizeof(arr) / sizeof(arr[0]), sizeof (int), int_cmp);  
+//	for (i = 0; i< sizeof(arr) / sizeof(arr[0]); i++)  
+//	{     
+//		printf( "%d ", arr[i]);    
+//	}    
+//	printf("\n");  
+//	return 0;
+//} 
+
+
+
+//#include<stdio.h>
+//
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,0};
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int i = 0;
+//	int tmp = 0;
+//	for (i = 0; i < sz/2; i++)
+//	{
+//		tmp = arr[i];
+//		arr[i] = arr[sz - i - 1];
+//		arr[sz - i - 1] = tmp;
+//	}
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d  ", arr[i]);
+//	}
+//	return 0;
+//}
+
+//#include<stdio.h>
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,0 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	int *p = arr;
+//	int *q = arr + sz - 1;
+//	int tmp = 0;
+//	while (p < q)
+//	{
+//		tmp = *p;
+//		*p = *q;
+//		*q = tmp;
+//		p++;
+//		q--;
+//	}
+//	for (int i = 0; i < sz; i++)
+//	{
+//		printf("%d  ", arr[i]);
+//	}
+//	return 0;
+//}
+
+
+int bubble(int arr[], int num)
 {
-	int x, y;
-	int input = 1;    
-	int ret = 0;    
-	while (input)
-	{ 
-		printf("*************************\n");
-		printf("  1:add           2:sub  \n");
-		printf("  3:mul           4:div  \n");
-		printf("*************************\n");         
-		printf("请选择：");         
-		scanf("%d", &input);         
-		switch (input) 
-		{ 
-		case 1:               
-			printf("输入操作数：");               
-			scanf("%d %d", &x, &y);               
-			ret = add(x, y);              
-			break;         
-		case 2:               
-			printf("输入操作数：");               
-			scanf("%d %d", &x, &y);               
-			ret = sub(x, y);               
-			break;         
-		case 3:               
-			printf("输入操作数：");              
-			scanf("%d %d", &x, &y);               
-			ret = mul(x, y);               
-			break;         
-		case 4:               
-			printf("输入操作数：");               
-			scanf("%d %d", &x, &y);               
-			ret = div(x, y);               
-			break;         
-		default:               
-			printf("选择错误\n");               
-			break;
-		}         
-		printf("ret = %d\n", ret);
-	}     
+	int i = 0;
+	int j = 0;
+	for (i = 0; i < num; i++)
+	{
+		for (j = num - 1; j >= 0; j--)
+		{
+			if (arr[i] < arr[j])
+			{
+				int tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
+			}
+		}
+	}
+}
+
+#include<stdio.h>
+int main()
+{
+	int arr[] = { 3,1,6,4,8,9,2,7,0,5 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	bubble(arr, sz);
+	for (int i = 0; i < sz; i++)
+	{
+		printf("%d  ",arr[i]);
+	}
 	return 0;
 }
