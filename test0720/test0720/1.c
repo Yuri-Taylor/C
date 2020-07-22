@@ -478,14 +478,39 @@
 //	return 0;
 //}
 
-#include <stdio.h>
+//#include <stdio.h>
+//
+//int main() 
+//{
+//	FILE * pFile; 
+//	char buffer[] = { 'x' , 'y' , 'z' }; 
+//	pFile = fopen("myfile.bin", "wb"); 
+//	fwrite(buffer, sizeof(char), sizeof(buffer), pFile); 
+//	fclose(pFile); 
+//	return 0;
+//}
 
-int main() 
-{
-	FILE * pFile; 
-	char buffer[] = { 'x' , 'y' , 'z' }; 
-	pFile = fopen("myfile.bin", "wb"); 
-	fwrite(buffer, sizeof(char), sizeof(buffer), pFile); 
-	fclose(pFile); 
-	return 0;
-}
+
+//#include <stdio.h> 
+//#include <stdlib.h>
+//
+//int main(void) 
+//{
+//	int c;
+//	FILE* fp = fopen("test.txt", "r");
+//	if(!fp) {
+//		perror("File opening failed");
+//		return EXIT_FAILURE;
+//	}    
+//	//fgetc 当读取失败的时候或者遇到文件结束的时候，都会返回EOF ? ?
+//	while ((c = fgetc(fp)) != EOF) // 标准C I/O读取文件循环 ?  
+//	{
+//		putchar(c);
+//	}   
+//	//判断是什么原因结束的 ? ?
+//	if (ferror(fp))
+//		puts("I/O error when reading");
+//	else if (feof(fp))
+//		puts("End of file reached successfully");
+//	fclose(fp);
+//}
