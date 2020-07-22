@@ -1,0 +1,5 @@
+﻿  1.c
+f:\c\test0722\test0722\1.c(135): warning C4013: “malloc”未定义；假设外部返回 int
+f:\c\test0722\test0722\1.c(136): warning C4013: “strcpy”未定义；假设外部返回 int
+f:\c\test0722\test0722\1.c(137): warning C4013: “free”未定义；假设外部返回 int
+  test0722.vcxproj -> F:\C\test0722\Debug\test0722.exe
