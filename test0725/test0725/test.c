@@ -11,9 +11,9 @@ void TestSList()
 	SListPopFront(&pList);
 	SListPrint(pList);
 }
-//
-//int main()
-//{
-//	TestSList();
-//	return 0;
-//}
+
+int main()
+{
+	TestSList();
+	return 0;
+}
