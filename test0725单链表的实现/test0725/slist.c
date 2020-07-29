@@ -116,3 +116,14 @@ void SListEraseAfter(SListNode* pos)
 		free(next);
 	}
 }
+void SListDestory(SListNode** ppList)
+{
+	SListNode* cur = *ppList;
+	while (cur)
+	{
+		SListNode* next = cur->next;
+		free(cur);
+		cur = next;
+	}
+	*ppList = NULL;
+}

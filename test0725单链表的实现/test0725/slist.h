@@ -17,3 +17,4 @@ void SListPopFront(SListNode** ppList);//头删
 SListNode* SListFind(SListNode* pList, SLTDataType x);//查找
 void SListInsertAfter(SListNode* pos, SLTDataType x);//在当前位置后插入
 void SListEraseAfter(SListNode* pos);//在当前位置后删除
+void SListDestory(SListNode** ppList);//销毁
