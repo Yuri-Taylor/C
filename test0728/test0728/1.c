@@ -245,49 +245,163 @@ typedef struct ListNode
 
 
 //6. 编写代码，以给定值x为基准将链表分割成两部分，所有小于x的结点排在大于或等于x的结点之前 
-ListNode* partition(ListNode* pHead, int x) {
-	ListNode* cur = pHead;
-	ListNode* list = NULL;
-	ListNode* head1, *head2, *tail1, *tail2;
-	head1 = tail1 = (ListNode*)malloc(sizeof(ListNode));
-	head2 = tail2 = (ListNode*)malloc(sizeof(ListNode));
-	tail1->next = NULL;
-	tail2->next = NULL;
-	while (cur)
-	{
-		if (cur->val < x)
-		{
-			tail1->next = cur;
-			tail1 = cur;
-		}
-		else {
-			tail2->next = cur;
-			tail2 = cur;
-		}
-		cur = cur->next;
-	}
-	tail1->next = head2->next;
-	tail2->next = NULL;
-	list = head1->next;
-	free(head1);
-	free(head2);
-	return list;
-}
+//ListNode* partition(ListNode* pHead, int x) {
+//	ListNode* cur = pHead;
+//	ListNode* list = NULL;
+//	ListNode* head1, *head2, *tail1, *tail2;
+//	head1 = tail1 = (ListNode*)malloc(sizeof(ListNode));
+//	head2 = tail2 = (ListNode*)malloc(sizeof(ListNode));
+//	tail1->next = NULL;
+//	tail2->next = NULL;
+//	while (cur)
+//	{
+//		if (cur->data < x)
+//		{
+//			tail1->next = cur;
+//			tail1 = cur;
+//		}
+//		else {
+//			tail2->next = cur;
+//			tail2 = cur;
+//		}
+//		cur = cur->next;
+//	}
+//	tail1->next = head2->next;
+//	tail2->next = NULL;
+//	list = head1->next;
+//	free(head1);
+//	free(head2);
+//	return list;
+//}
 
 
 //7.在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，重复的结点不保留，返回链表头指针
-
+//ListNode* deleteDuplication(ListNode* pHead)
+//{
+//	if (pHead == NULL || pHead->next == NULL)
+//		return pHead;
+//	ListNode* cur = pHead;
+//	ListNode* head = (ListNode*)malloc(sizeof(ListNode));
+//	head->next = NULL;
+//	ListNode* list = head;
+//	while (cur)
+//	{
+//		if (cur->next != NULL && cur->data == cur->next->data)
+//		{
+//			while (cur->next != NULL && cur->data == cur->next->data)
+//			{
+//				cur = cur->next;
+//			}
+//			cur = cur->next;
+//			head->next = cur;
+//		}
+//		else {
+//			head->next = cur;
+//			head = head->next;
+//			cur = cur->next;
+//		}
+//	}
+//
+//	return list->next;
+//}
 
 
 //8.链表的回文结构
-
+//bool chkPalindrome(ListNode* A) {
+//	if (A == NULL || A->next == NULL)
+//	{
+//		return true;
+//	}
+//	ListNode* cur = A;
+//	ListNode* copyA = NULL;
+//	while (cur)
+//	{
+//		//拷贝
+//		ListNode* copyCur = (ListNode*)malloc(sizeof(ListNode));
+//		copyCur->next = NULL;
+//		copyCur->data = cur->data;
+//		//头插
+//		copyCur->next = copyA;
+//		copyA = copyCur;
+//		cur = cur->next;
+//	}
+//	cur = A;
+//	ListNode* copyCur = copyA;
+//	while (cur)
+//	{
+//		if (cur->data != copyCur->data)
+//			return false;
+//		cur = cur->next;
+//		copyCur = copyCur->next;
+//	}
+	//使用过后释放空间
+	//copyCur = copyA;
+	//while (copyCur)
+	//{
+	//	ListNode* next = copyCur->next;
+	//	free(copyCur);
+	//	copyCur = next;
+	//}
+//	return true;
+//}
 
 //9.输入两个链表，找出它们的第一个公共结点
+ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+	if (headA == NULL || headB == NULL)
+	{
+		return NULL;
+	}
+	ListNode* curA = headA;
+	ListNode* curB = headB;
+	int lenA = 0;
+	int lenB = 0;
 
+	while (curA->next)
+	{
+		lenA++;
+		curA = curA->next;
+	}
+	while (curB->next)
+	{
+		lenB++;
+		curB = curB->next;
+	}
+	if (curA != curB)
+		return NULL;
+	int gap = abs(lenA - lenB);
+	ListNode* longList = headA;
+	ListNode* shortList = headB;
+	if (lenA < lenB)
+	{
+		longList = headB;
+		shortList = headA;
+	}
+	while (gap--)
+	{
+		longList = longList->next;
+	}
+	while (longList != shortList)
+	{
+		longList = longList->next;
+		shortList = shortList->next;
+	}
+	return longList;
+}
 
 
 //10. 给定一个链表，判断链表中是否有环。
-
+//bool hasCycle(ListNode *head) {
+//	ListNode* fast = head;
+//	ListNode* slow = head;
+//	while (fast && fast->next)
+//	{
+//		fast = fast->next->next;
+//		slow = slow->next;
+//		if (slow == fast)
+//			return true;
+//	}
+//	return false;
+//}
 
 //11. 给定一个链表，返回链表开始入环的第一个节点。?如果链表无环，则返回?NULL
 
