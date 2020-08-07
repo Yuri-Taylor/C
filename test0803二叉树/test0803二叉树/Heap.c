@@ -14,7 +14,7 @@ void AdjustDown(HpDataType* a, size_t n, int root)
 		}
 		//如果孩子比父亲小
 		if (a[parent] > a[child])
-		{
+		{		 
 			HpDataType tmp = a[child];
 			a[child] = a[parent];
 			a[parent] = tmp;
@@ -118,6 +118,10 @@ int HeapEmpty(Heap* hp)//判空
 {
 	return hp->_size == 0 ? 1 : 0;
 }
+
+
+
+
 void HeapSort(int* a, int n)//对堆排序（升序）
 {
 	//建小堆
