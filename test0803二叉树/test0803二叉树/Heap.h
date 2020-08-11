@@ -21,5 +21,8 @@ void HeapPop(Heap* hp);//删除
 HpDataType HeapTop(Heap* hp);//取堆顶的数据
 int HeapSize(Heap* hp);//堆的数据个数
 int HeapEmpty(Heap* hp);//判空
+
+
+
 void HeapSort(HpDataType* a, size_t n);//对堆排序
 void HeapPrint(Heap* hp);
