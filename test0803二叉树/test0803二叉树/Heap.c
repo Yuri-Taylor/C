@@ -1,11 +1,19 @@
 #include"Heap.h"
 
+//typedef int HpDataType;
+//
+//typedef struct Heap
+//{
+//	HpDataType* _a;
+//	size_t _size;
+//	size_t _capapcity;
+//}Heap;
 //小堆向下调整
 void AdjustDown(HpDataType* a, size_t n, int root)
 {
-	int parent = root;
-	int child = parent * 2 + 1;
-	while (child<n)
+	size_t parent = root;
+	size_t child = parent * 2 + 1;
+	while ( child < n)
 	{
 		//找出小的孩子
 		if (a[child + 1] < a[child])
@@ -75,7 +83,7 @@ void HeapCreate(Heap* hp, HpDataType* a, size_t n)//创建堆
 //}
 void HeapPrint(Heap* hp)
 {
-	for (int i = 0; i < hp->_size; ++i)
+	for (size_t i = 0; i < hp->_size; ++i)
 	{
 		printf("%d ", hp->_a[i]);
 	}
@@ -83,14 +91,17 @@ void HeapPrint(Heap* hp)
 }
 void HeapDestory(Heap* hp)//销毁
 {
-
+	hp->_capapcity = 0;
+	hp->_size = 0;
+	free(hp->_a);
+	hp->_a = NULL;
 }
 void HeapPush(Heap* hp, HpDataType x)//插入
 {
 	if (hp->_size == hp->_capapcity)
 	{
 		size_t newcapacity = hp->_capapcity * 2;
-		hp->_a = (HpDataType*)realloc(sizeof(HpDataType)*newcapacity);
+		hp->_a = (HpDataType*)malloc(sizeof(HpDataType)*newcapacity);
 		hp->_capapcity = newcapacity;
 	}
 	hp->_a[hp->_size] = x;
@@ -119,9 +130,6 @@ int HeapEmpty(Heap* hp)//判空
 	return hp->_size == 0 ? 1 : 0;
 }
 
-
-
-
 void HeapSort(int* a, int n)//对堆排序（升序）
 {
 	//建小堆
@@ -138,4 +146,48 @@ void HeapSort(int* a, int n)//对堆排序（升序）
 		AdjustDown(a, end, 0);
 		--end;
 	}
+}
+
+
+
+
+
+
+
+void printTopK(int* a, int n, int k)
+{
+	//建k个数的小堆
+	Heap hp;
+	HeapCreate(&hp, a, k);
+	for (int i = k; i < n; i++)
+	{
+		//如果数据大于堆顶的数据，替换
+		if (HeapTop(&hp) < a[i])
+		{
+			HeapPop(&hp);
+			HeapPush(&hp, a[i]);
+		}
+	}
+	HeapPrint(&hp);
+}
+void TestTopK()
+{
+	int n = 10000;
+	int* a = (int*)malloc(sizeof(int)*n);
+	srand(time(0));
+	for (size_t i = 0; i < n; ++i)
+	{
+		a[i] = rand() % 1000000;
+	}
+	a[5] = 1000000 + 1;
+	a[1231] = 1000000 + 2;
+	a[531] = 1000000 + 3;
+	a[5121] = 1000000 + 4;
+	a[115] = 1000000 + 5;
+	a[2335] = 1000000 + 6;
+	a[9999] = 1000000 + 7;
+	a[76] = 1000000 + 8;
+	a[423] = 1000000 + 9;
+	a[3144] = 1000000 + 10;
+	printTopK(a, n, 10);
 }

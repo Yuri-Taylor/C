@@ -4,7 +4,8 @@
 #include<malloc.h>
 #include<memory.h>
 #include<string.h>
-
+#include<time.h>
+#include<stdlib.h>
 typedef int HpDataType;
 
 typedef struct Heap
@@ -21,8 +22,10 @@ void HeapPop(Heap* hp);//删除
 HpDataType HeapTop(Heap* hp);//取堆顶的数据
 int HeapSize(Heap* hp);//堆的数据个数
 int HeapEmpty(Heap* hp);//判空
-
-
-
-void HeapSort(HpDataType* a, size_t n);//对堆排序
 void HeapPrint(Heap* hp);
+void HeapSort(int* a, int n);//对堆排序
+
+
+
+void printTopK(int* a, int n, int k);
+void TestTopK();
