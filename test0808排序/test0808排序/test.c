@@ -14,10 +14,6 @@ void bubbleSort(int *arr, int n)
 
 			{
 
-
-
-
-
 				m = arr[j];
 
 				arr[j] = arr[j + 1];
