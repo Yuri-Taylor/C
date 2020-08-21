@@ -8,6 +8,8 @@ typedef struct
 	int back;//∂”Œ≤
 }MyCircularQueue;
 
+
+
 MyCircularQueue* muyCircularQueueCreate(int k)
 {
 	MyCircularQueue* cq = (MyCircularQueue*)malloc(sizeof(MyCircularQueue));
