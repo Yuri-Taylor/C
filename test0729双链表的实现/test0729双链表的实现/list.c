@@ -81,6 +81,7 @@ ListNode* ListFind(ListNode* phead, LTDataType x)//查找
 	}
 	return NULL;
 }
+
 void ListInsert(ListNode* pos, LTDataType x)//在pos位置前面插入
 {
 	ListNode* prev = pos->prev;
@@ -92,6 +93,7 @@ void ListInsert(ListNode* pos, LTDataType x)//在pos位置前面插入
 	newnode->next = pos;
 	pos->prev = newnode;
 }
+
 void ListErase(ListNode* pos)//删除pos位置的节点
 {
 	ListNode* prev = pos->prev;
